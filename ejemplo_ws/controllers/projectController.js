@@ -114,24 +114,29 @@ module.exports = {
     const id_per_res = req.params.id_per_res;
     const state = req.params.state;
 
-    return project.findAll({
-        attributes: ['id', 'title', 'state'],
-        include: [{
-            attributes: ['id', 'description'],
-            model: activity
-        },
-        {
+    return project
+      .findAll({
+        attributes: ["id", "title", "state"],
+        include: [
+          {
+            attributes: ["id", "description"],
+            model: activity,
+          },
+          {
             model: employ,
             where: {
-                id: id_per_res
-            }
-        }],
+              id: id_per_res,
+            },
+          },
+        ],
         where: {
-            state: state === 'true',
-            state: state === 'false'
-        }
-    })
-        .then((project) => res.status(200).send(project))
-        .catch((error) => { res.status(400).send(error); });
-    },
+          state: state === "true",
+          state: state === "false",
+        },
+      })
+      .then((project) => res.status(200).send(project))
+      .catch((error) => {
+        res.status(400).send(error);
+      });
+  },
 };
