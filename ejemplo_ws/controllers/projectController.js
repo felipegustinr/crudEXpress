@@ -131,7 +131,7 @@ module.exports = {
         ],
         where: {
           state: state === "true",
-          state: state === "false",
+          
         },
       })
       .then((project) => res.status(200).send(project))
