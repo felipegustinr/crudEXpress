@@ -1,7 +1,5 @@
-const {
-  DataTypes
-} = require('sequelize');
-module.exports = sequelize => {
+const { DataTypes } = require("sequelize");
+module.exports = (sequelize) => {
   const attributes = {
     id: {
       type: DataTypes.BIGINT,
@@ -10,7 +8,7 @@ module.exports = sequelize => {
       comment: null,
       primaryKey: true,
       field: "id",
-      autoIncrement: true
+      autoIncrement: true,
     },
     name: {
       type: DataTypes.CHAR(200),
@@ -19,7 +17,7 @@ module.exports = sequelize => {
       comment: null,
       primaryKey: false,
       field: "name",
-      autoIncrement: false
+      autoIncrement: false,
     },
     lastname: {
       type: DataTypes.CHAR(200),
@@ -28,7 +26,7 @@ module.exports = sequelize => {
       comment: null,
       primaryKey: false,
       field: "lastname",
-      autoIncrement: false
+      autoIncrement: false,
     },
     email: {
       type: DataTypes.CHAR(150),
@@ -37,13 +35,17 @@ module.exports = sequelize => {
       comment: null,
       primaryKey: false,
       field: "email",
-      autoIncrement: false
-    }
+      autoIncrement: false,
+    },
   };
   const options = {
     tableName: "employ",
     comment: "",
-    indexes: []
+    indexes: [],
+    timestamps: false,
+    underscored: true,
+    freezeTableName: true,
+    schema: "public",
   };
   const EmployModel = sequelize.define("employ_model", attributes, options);
   return EmployModel;

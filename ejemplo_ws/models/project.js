@@ -1,7 +1,5 @@
-const {
-  DataTypes
-} = require('sequelize');
-module.exports = sequelize => {
+const { DataTypes } = require("sequelize");
+module.exports = (sequelize) => {
   const attributes = {
     id: {
       type: DataTypes.BIGINT,
@@ -10,7 +8,7 @@ module.exports = sequelize => {
       comment: null,
       primaryKey: true,
       field: "id",
-      autoIncrement: true
+      autoIncrement: true,
     },
     title: {
       type: DataTypes.CHAR(200),
@@ -19,7 +17,7 @@ module.exports = sequelize => {
       comment: null,
       primaryKey: false,
       field: "title",
-      autoIncrement: false
+      autoIncrement: false,
     },
     description: {
       type: DataTypes.TEXT,
@@ -28,7 +26,7 @@ module.exports = sequelize => {
       comment: null,
       primaryKey: false,
       field: "description",
-      autoIncrement: false
+      autoIncrement: false,
     },
     state: {
       type: DataTypes.BOOLEAN,
@@ -37,7 +35,7 @@ module.exports = sequelize => {
       comment: null,
       primaryKey: false,
       field: "state",
-      autoIncrement: false
+      autoIncrement: false,
     },
     id_per_res: {
       type: DataTypes.INTEGER,
@@ -49,14 +47,18 @@ module.exports = sequelize => {
       autoIncrement: false,
       references: {
         key: "id",
-        model: "employ_model"
-      }
-    }
+        model: "employ_model",
+      },
+    },
   };
   const options = {
     tableName: "project",
     comment: "",
-    indexes: []
+    indexes: [],
+    timestamps: false,
+    underscored: true,
+    freezeTableName: true,
+    schema: "public",
   };
   const ProjectModel = sequelize.define("project_model", attributes, options);
   return ProjectModel;
