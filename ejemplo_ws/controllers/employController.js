@@ -24,9 +24,9 @@ module.exports = {
   add(req, res) {
     return employ
       .create({
-        title: req.body.title,
-        description: req.body.description,
-        state: req.body.state,
+        name: req.body.name,
+        lastname: req.body.lastname,
+        email: req.body.email,
       })
       .then((employ) => res.status(201).send(employ))
       .catch((error) => res.status(400).send(error));
@@ -40,9 +40,9 @@ module.exports = {
         }
         return employ
           .update({
-            title: req.body.title || employ.title,
-            description: req.body.description || employ.description,
-            state: req.body.state || employ.state,
+            name: req.body.name || employ.name,
+            lastname: req.body.lastname || employ.lastname,
+            email: req.body.email || employ.email,
           })
           .then(() => res.status(200).send(employ))
           .catch((error) => res.status(400).send(error));
