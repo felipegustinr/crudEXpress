@@ -1,2 +1,3 @@
 const projectController = require("./projectController");
-module.exports = { projectController };
+const activityController = require("./activityController");
+module.exports = { projectController, activityController };
