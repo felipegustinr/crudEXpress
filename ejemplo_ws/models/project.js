@@ -61,5 +61,9 @@ module.exports = (sequelize) => {
     schema: "public",
   };
   const ProjectModel = sequelize.define("project_model", attributes, options);
+  ProjectModel.associate = function (models) {
+    ProjectModel.hasMany(models.activity_model, { foreignKey: "id_project" });
+    ProjectModel.belongsTo(models.employ_model, { foreignKey: 'id_per_res' });
+  };
   return ProjectModel;
 };
