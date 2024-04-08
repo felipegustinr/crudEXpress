@@ -48,5 +48,8 @@ module.exports = (sequelize) => {
     schema: "public",
   };
   const ActivityModel = sequelize.define("activity_model", attributes, options);
+  ActivityModel.associate = function (models) {
+    ActivityModel.belongsTo(models.project_model, { foreignKey: "id_project" });
+  };
   return ActivityModel;
 };
