@@ -27,6 +27,7 @@ module.exports = {
         title: req.body.title,
         description: req.body.description,
         state: req.body.state,
+        id_per_res: req.body.id_per_res,
       })
       .then((project) => res.status(201).send(project))
       .catch((error) => res.status(400).send(error));
@@ -43,6 +44,7 @@ module.exports = {
             title: req.body.title || project.title,
             description: req.body.description || project.description,
             state: req.body.state || project.state,
+            id_per_res: req.body.id_per_res || project.id_per_res,
           })
           .then(() => res.status(200).send(project))
           .catch((error) => res.status(400).send(error));
