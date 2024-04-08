@@ -73,7 +73,7 @@ module.exports = {
       .findAll({
         attributes: ["id", "title", "description", "state"],
         include: [
-          { attributes: ["id", "descripcion"], model: activity },
+          { attributes: ["id", "description"], model: activity },
           { model: employ },
         ],
       })
@@ -87,7 +87,7 @@ module.exports = {
       .findAll({
         attributes: ["id", "title"],
         include: [
-          { attributes: ["id", "descripcion"], model: activity },
+          { attributes: ["id", "description"], model: activity },
           { model: employ },
         ],
         where: { state: true },
@@ -110,4 +110,28 @@ module.exports = {
       })
       .catch((error) => res.status(400).send(error));
   },
+  enabledDisabledProjects(req, res) {
+    const id_per_res = req.params.id_per_res;
+    const state = req.params.state;
+
+    return project.findAll({
+        attributes: ['id', 'title', 'state'],
+        include: [{
+            attributes: ['id', 'description'],
+            model: activity
+        },
+        {
+            model: employ,
+            where: {
+                id: id_per_res
+            }
+        }],
+        where: {
+            state: state === 'true',
+            state: state === 'false'
+        }
+    })
+        .then((project) => res.status(200).send(project))
+        .catch((error) => { res.status(400).send(error); });
+    },
 };
