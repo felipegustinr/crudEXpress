@@ -24,9 +24,9 @@ module.exports = {
   add(req, res) {
     return activity
       .create({
-        title: req.body.title,
+        name: req.body.name,
         description: req.body.description,
-        state: req.body.state,
+        id_Project: req.body.id_Project,
       })
       .then((activity) => res.status(201).send(activity))
       .catch((error) => res.status(400).send(error));
@@ -40,9 +40,9 @@ module.exports = {
         }
         return activity
           .update({
-            title: req.body.title || activity.title,
+            name: req.body.name || activity.name,
             description: req.body.description || activity.description,
-            state: req.body.state || activity.state,
+            id_Project: req.body.id_Project || activity.id_Project,
           })
           .then(() => res.status(200).send(activity))
           .catch((error) => res.status(400).send(error));
