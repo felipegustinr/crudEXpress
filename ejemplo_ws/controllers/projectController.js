@@ -131,7 +131,7 @@ module.exports = {
         ],
         where: {
           
-          state: state === 'true' ? true : false
+          state: state 
           
         },
       })
