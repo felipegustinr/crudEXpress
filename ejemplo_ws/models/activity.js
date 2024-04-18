@@ -34,7 +34,7 @@ module.exports = (sequelize) => {
       defaultValue: null,
       comment: null,
       primaryKey: false,
-      field: "id_Project",
+      field: "id_project",
       autoIncrement: false,
     },
   };
