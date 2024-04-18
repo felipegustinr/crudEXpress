@@ -34,7 +34,7 @@ module.exports = (sequelize) => {
       defaultValue: null,
       comment: null,
       primaryKey: false,
-      field: "id_project",
+      field: "id_Project",
       autoIncrement: false,
     },
   };
@@ -49,7 +49,7 @@ module.exports = (sequelize) => {
   };
   const ActivityModel = sequelize.define("activity_model", attributes, options);
   ActivityModel.associate = function (models) {
-    ActivityModel.belongsTo(models.project_model, { foreignKey: "id_project" });
+    ActivityModel.belongsTo(models.project_model, { foreignKey: "id_Project" });
   };
   return ActivityModel;
 };
