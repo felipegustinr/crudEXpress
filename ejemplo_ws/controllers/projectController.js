@@ -130,8 +130,8 @@ module.exports = {
           },
         ],
         where: {
-          state: state === "true",
-          //state: state === 'true' ? true : false
+          //state: state === "true",
+          state: state === 'true' ? true : false
           
         },
       })
